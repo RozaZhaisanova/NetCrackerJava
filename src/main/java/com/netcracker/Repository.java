@@ -6,7 +6,7 @@ public class Repository {
     /**
      * массив контактов
      */
-    private Contact[] contacts;
+    private Contract[] contacts;
     /**
      * ёмкость массива
      */
@@ -31,7 +31,7 @@ public class Repository {
      * Конструктор без параметров создает массив с длиной capacity
      */
     public Repository() {
-        this.contacts = new Contact[capacity];
+        this.contacts = new Contract[capacity];
     }
 
     /**
@@ -42,27 +42,20 @@ public class Repository {
      */
     public Repository(int capacity) {
         this.capacity = capacity;
-        this.contacts = new Contact[capacity];
+        this.contacts = new Contract[capacity];
     }
 
-    /**
-     * Возвращает размер массива
-     *
-     * @return размер
-     */
-    public int size() {
-        return this.nextCallIndex;
-    }
+
 
     /**
      * Добавляет новый экземпляр класса Contact в массив
      *
      * @param contact новый экземпляр который надо добавить
      */
-    public void add(Contact contact) {
+    public void add(Contract contact) {
         if (nextCallIndex >= this.capacity) {
             this.capacity += (this.capacity * 0.75);
-            Contact[] arr = new Contact[this.capacity];
+            Contract[] arr = new Contract[this.capacity];
 
             this.copyArray(arr, this.contacts);
             this.contacts = arr;
@@ -81,7 +74,7 @@ public class Repository {
      */
 
 
-    public Contact searchByID(int id) {
+    public Contract searchByID(int id) {
         //Do some sort of check on id to ensure its valid?
         for (int i = 0; i < size; i++) {
             if (contacts[i].getID() == id) {
@@ -100,7 +93,7 @@ public class Repository {
     public void deleteByID(int id) {
         for (int i = 0; i < size; i++) {
             if (contacts[i].getID() == id) {
-                Contact[] result = new Contact[contacts.length - 1];
+                Contract[] result = new Contract[contacts.length - 1];
 
                 // Copy the elements at the left of the index.
                 System.arraycopy(contacts, 0, result, 0, i);
@@ -120,14 +113,21 @@ public class Repository {
      * @param previousArray старый массив
      *
      */
-    private void copyArray(Contact[] nextArray, Contact[] previousArray) {
+    private void copyArray(Contract[] nextArray, Contract[] previousArray) {
         for (int i = 0; i < previousArray.length; i++) {
             nextArray[i] = previousArray[i];
         }
 
     }
 
-
+    /**
+     * Возвращает размер массива
+     *
+     * @return размер
+     */
+    public int size() {
+        return this.nextCallIndex;
+    }
     @Override
     public int hashCode() {
         final int prime = 31;

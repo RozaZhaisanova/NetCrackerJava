@@ -1,6 +1,6 @@
 package com.netcracker;
 
-import java.time.LocalDate;
+import org.joda.time.*;
 
 public class Person implements Comparable<Person> {
     /**
@@ -124,7 +124,7 @@ public class Person implements Comparable<Person> {
      Возвращает дату рождения данного пользователя
      @return Дату
      */
-    public LocalDate getYourDate() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -133,7 +133,7 @@ public class Person implements Comparable<Person> {
      @param dateOfBirth
      Дата рождения
      */
-    public void setYourDate(LocalDate dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
     /**
@@ -233,7 +233,7 @@ public class Person implements Comparable<Person> {
 
     @Override
     public String toString() {
-        return "Hello My Name Is"+ this.name;
+        return "Hello, my name is "+ this.name;
     }
 
 
