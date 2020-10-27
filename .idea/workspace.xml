@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="lab1:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e8b4ea53-24b7-4cac-b4ac-015b58d5c108" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/netcracker/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/netcracker/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/netcracker/TestPerson.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/netcracker/TestPerson.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +37,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunManager" selected="JUnit.TestPerson">
@@ -155,6 +165,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="434" y="148" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1603835739404">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="434" y="148" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1603835739404" />
     <state x="367" y="0" key="CommitChangelistDialog2" timestamp="1603834970039">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -163,29 +177,29 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1603821827117" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1603834735001">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1603835130083">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603834735001" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1603834735000">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603835130083" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1603835130083">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603834735000" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1603834735000">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603835130083" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1603835130083">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603834735000" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1603834735001">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603835130083" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1603835130083">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603834735001" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603835130083" />
     <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1603825298633">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="213" y="19" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1603825298633" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1603822203415">
+    <state x="184" y="0" key="SettingsEditor" timestamp="1603835748011">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603822203415" />
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603835748011" />
   </component>
 </project>
