@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8b4ea53-24b7-4cac-b4ac-015b58d5c108" name="Default Changelist" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="e8b4ea53-24b7-4cac-b4ac-015b58d5c108" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/netcracker/Contact.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/netcracker/Internet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/netcracker/Internet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/netcracker/Mobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/netcracker/Mobile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/netcracker/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/netcracker/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/netcracker/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/netcracker/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/netcracker/Television.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/netcracker/Television.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +133,21 @@
       <option name="presentableId" value="Default" />
       <updated>1603716933580</updated>
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1603834790054</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603834790054</updated>
+    </task>
+    <task id="LOCAL-00002" summary="first commit">
+      <created>1603834972541</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603834972541</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -149,10 +155,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="367" y="0" key="CommitChangelistDialog2" timestamp="1603834959968">
+    <state x="367" y="0" key="CommitChangelistDialog2" timestamp="1603834970039">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="367" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1603834959968" />
+    <state x="367" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1603834970039" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1603821827117">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
