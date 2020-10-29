@@ -1,4 +1,4 @@
-package com.netcracker;
+package com.netcracker.enums;
 
 /**
  * Перечисление пол пользователя

@@ -1,4 +1,4 @@
-package com.netcracker;
+package com.netcracker.classes;
 
 import java.time.LocalDate;
 

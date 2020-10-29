@@ -1,12 +1,12 @@
-package com.netcracker;
+package com.netcracker.classes;
 /**
 Класс паспорт пользователя со свойствми <b>SERIES</b>, <b>NUMBER</b>
  */
 public class Passport {
     /** Поле серия паспорта */
-    final String SERIES;
+    private String series;
     /** Поле номер паспорта */
-    final Integer NUMBER;
+    private Integer number;
 
     /**
      * Конструктор с двумя параметрами
@@ -16,15 +16,15 @@ public class Passport {
      *        номер паспорта
      */
     public Passport(String series, Integer number) {
-        this.SERIES = series;
-        this.NUMBER = number;
+        this.series = series;
+        this.number = number;
     }
 
     public String getSeries() {
-        return SERIES;
+        return series;
     }
 
     public Integer getNumber() {
-        return NUMBER;
+        return number;
     }
 }

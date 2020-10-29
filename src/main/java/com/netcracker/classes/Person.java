@@ -1,5 +1,6 @@
-package com.netcracker;
+package com.netcracker.classes;
 
+import com.netcracker.enums.Gender;
 import org.joda.time.*;
 
 public class Person implements Comparable<Person> {

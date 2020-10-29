@@ -1,4 +1,4 @@
-package com.netcracker;
+package com.netcracker.classes;
 /**
  * Класс пакета каналов со свойствми <b>name</b>, <b>numberOfChannels</b>, <b>channels</b>
  */
