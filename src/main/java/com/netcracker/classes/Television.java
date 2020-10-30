@@ -9,8 +9,9 @@ public class Television extends Contract {
     /** Поле включенного в контракт пакета каналов */
     private ChannelPackage channelPackage;
 
-    public Television(int id, LocalDate beginDate, LocalDate endDate, Person client, int number) {
+    public Television(int id, LocalDate beginDate, LocalDate endDate, Person client, int number, ChannelPackage channelPackage) {
         super(id, beginDate, endDate, client, number);
+        this.channelPackage=channelPackage;
     }
 
     public ChannelPackage getChannelPackage(){

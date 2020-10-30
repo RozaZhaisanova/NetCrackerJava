@@ -9,8 +9,9 @@ public class Internet extends Contract {
     /** Поле поддерживаемой максимальной скорости */
     private int maxSpeed;
 
-    public Internet(int id, LocalDate beginDate, LocalDate endDate, Person client, int number) {
+    public Internet(int id, LocalDate beginDate, LocalDate endDate, Person client, int number, int maxSpeed) {
         super(id, beginDate, endDate, client, number);
+        this.maxSpeed=maxSpeed;
     }
 
     /**

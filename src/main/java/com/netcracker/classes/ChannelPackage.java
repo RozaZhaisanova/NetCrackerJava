@@ -4,11 +4,11 @@ package com.netcracker.classes;
  */
 public class ChannelPackage {
     /** Поле имени пакета */
-    String name;
+    private String name;
     /** Поле количество каналов в пакете */
-    int numberOfChannels;
-    /** Поле массив пакетов */
-    String[] channels;
+    private int numberOfChannels;
+    /** Поле массив каналов */
+    private String[] channels;
     public void setName(String name) {
         this.name = name;
     }

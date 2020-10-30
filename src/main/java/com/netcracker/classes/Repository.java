@@ -10,13 +10,13 @@ public class Repository {
     /**
      * ёмкость массива
      */
-    public int capacity = 16;
+    private int capacity = 16;
 
     /**
      * Индекс следующей ячейки где программа должна добавить следующий экземпляр при
      * вызове метода add
      */
-    public int nextCallIndex = 0;
+    private int nextCallIndex = 0;
 
     /**
      * счетчик для итератора
@@ -75,13 +75,11 @@ public class Repository {
 
 
     public Contract searchByID(int id) {
-        //Do some sort of check on id to ensure its valid?
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < contacts.length; i++) {
             if (contacts[i].getID() == id) {
                 return contacts[i];
             }
         }
-
         return null;
     }
     /**
@@ -91,20 +89,19 @@ public class Repository {
      *
      */
     public void deleteByID(int id) {
-        for (int i = 0; i < size; i++) {
-            if (contacts[i].getID() == id) {
-                Contract[] result = new Contract[contacts.length - 1];
+        if (id <= nextCallIndex)
+        {
+            nextCallIndex--;
+            for (int i = id - 1; i < nextCallIndex; i++)
 
-                // Copy the elements at the left of the index.
-                System.arraycopy(contacts, 0, result, 0, i);
-                // Copy the elements at the right of the index.
-                System.arraycopy(contacts, i + 1, result, i, contacts.length - i - 1);
-                this.contacts=result;
+            { contacts[i]=contacts[i+1];}
 
-            }
+            contacts[nextCallIndex] = null;
+
+
+
+
         }
-        size--;
-
     }
     /**
      * копирует данные из одного массива в другой

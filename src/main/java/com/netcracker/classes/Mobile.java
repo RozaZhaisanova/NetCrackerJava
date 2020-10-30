@@ -13,8 +13,12 @@ public class Mobile extends Contract {
     /** Поле включенных в контракт смс */
     private int sms;
 
-    public Mobile(int id, LocalDate beginDate, LocalDate endDate, Person client, int number) {
+    public Mobile(int id, LocalDate beginDate, LocalDate endDate, Person client, int number, int min, int mb, int sms) {
         super(id, beginDate, endDate, client, number);
+        this.min=min;
+        this.mb=mb;
+        this.sms=sms;
+
     }
 
     /**
@@ -36,7 +40,7 @@ public class Mobile extends Contract {
      Возвращает количество мегабайт
      @return мб
      */
-    public int mb(){
+    public int getMb(){
         return mb;
     }
     /**
@@ -44,14 +48,14 @@ public class Mobile extends Contract {
      @param mb
      количество мб
      */
-    public void mb(int mb) {
+    public void setMb(int mb) {
         this.mb = mb;
     }
     /**
      Возвращает количество смс
      @return смс
      */
-    public int sms(){
+    public int getSms(){
         return sms;
     }
     /**
@@ -59,7 +63,7 @@ public class Mobile extends Contract {
      @param sms
      смс
      */
-    public void sms(int sms) {
+    public void setSms(int sms) {
         this.sms = sms;
     }
 

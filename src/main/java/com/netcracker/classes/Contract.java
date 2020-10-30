@@ -24,21 +24,41 @@ public class Contract {
      */
     private int number;
 
-
     /**
      Устанавливает дату начала контракта
-     @return Дату
+     @param beginDate
+     дата начала контракта
      */
-    private LocalDate getBeginDate() {
-        return beginDate;
+    public void setBeginDate(LocalDate beginDate) {
+        this.beginDate = beginDate;
     }
     /**
      Устанавливает дату конца контракта
+     @param endDate
+     дата конца контракта
+     */
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+    /**
+     Возвращает дату начала контракта
      @return Дату
      */
-    private LocalDate getEndDate() {
+    public LocalDate getBeginDate() {
+        return beginDate;
+    }
+    /**
+     Возвращает дату конца контракта
+     @return Дату
+     */
+    public LocalDate getEndDate() {
         return endDate;
     }
+    /**
+     Устанавливает ID контракта
+     @param id
+     id контракта
+     */
     public void setID(int id) {
         this.id = id;
     }
@@ -49,6 +69,11 @@ public class Contract {
     public  int getID(){
         return id;
     }
+    /**
+     Устанавливает number контракта
+     @param number
+     номер контракта
+     */
     public void setNumber(int number) {
         this.number = number;
     }
@@ -59,6 +84,21 @@ public class Contract {
     public  int getNumber(){
         return number;
     }
+    /**
+     Устанавливает клиента
+     @param client
+     дата конца контракта
+     */
+    public void setClient(Person client) {
+        this.client = client;
+    }
+    /**
+     Возвращает клиента
+     @return client
+     */
+    public Person getClient() {
+        return client;
+    }
     public Contract(int id, LocalDate beginDate, LocalDate endDate,Person client,int number) {
         this.id = id;
         this.beginDate = beginDate;
@@ -67,8 +107,14 @@ public class Contract {
         this.number=number;
 
     }
+    public Contract(int id, int number) {
+        this.id = id;
+
+        this.number=number;
+
+    }
     @Override
     public String toString() {
-        return "Hello My Name Is"+ this.number;
+        return "Contract`s number "+ this.number;
     }
 }

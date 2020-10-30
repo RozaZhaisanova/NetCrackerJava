@@ -1,6 +1,6 @@
 package com.netcracker.classes;
 /**
-Класс паспорт пользователя со свойствми <b>SERIES</b>, <b>NUMBER</b>
+Класс паспорт пользователя со свойствми <b>series</b>, <b>number</b>
  */
 public class Passport {
     /** Поле серия паспорта */
