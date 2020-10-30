@@ -35,7 +35,7 @@ public class TestRepository {
 
 
     @Test
-    public void testAddIPerson() {
+    public void testAddPerson() {
         int size=myRepository.size();
         Assert.assertEquals(size,9);
     }
@@ -58,15 +58,7 @@ public class TestRepository {
         Assert.assertEquals(8, myRepository.size());
     }
 
-   /* @Test
-    public void testAddIPerson2()
-    {
-        Person px=new Person(111,"Namex");
-        Person p3=(Person)myRepository.get(2);
-        myRepository.add(2,px);
-        Assert.assertEquals(px,myRepository.get(2));
-        Assert.assertEquals(p3,myRepository.get(3));
-    }*/
+
 
     @Test
     public void TestGetSize()
