@@ -6,7 +6,7 @@ public class Passport {
     /** Поле серия паспорта */
     private String series;
     /** Поле номер паспорта */
-    private Integer number;
+    private int number;
 
     /**
      * Конструктор с двумя параметрами
@@ -15,7 +15,7 @@ public class Passport {
      * @param number
      *        номер паспорта
      */
-    public Passport(String series, Integer number) {
+    public Passport(String series, int number) {
         this.series = series;
         this.number = number;
     }
@@ -24,7 +24,7 @@ public class Passport {
         return series;
     }
 
-    public Integer getNumber() {
+    public int getNumber() {
         return number;
     }
 }
