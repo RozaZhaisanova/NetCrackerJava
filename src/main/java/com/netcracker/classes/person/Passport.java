@@ -1,4 +1,4 @@
-package com.netcracker.classes;
+package com.netcracker.classes.person;
 /**
 Класс паспорт пользователя со свойствми <b>series</b>, <b>number</b>
  */

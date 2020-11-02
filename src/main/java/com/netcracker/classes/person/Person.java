@@ -1,4 +1,4 @@
-package com.netcracker.classes;
+package com.netcracker.classes.person;
 
 import com.netcracker.enums.Gender;
 import org.joda.time.*;

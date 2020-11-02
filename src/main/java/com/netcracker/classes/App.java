@@ -1,5 +1,9 @@
 package com.netcracker.classes;
 
+import com.netcracker.classes.contract.Contract;
+import com.netcracker.classes.person.Person;
+import com.netcracker.classes.repository.Repository;
+
 import java.time.LocalDate;
 
 public class App {

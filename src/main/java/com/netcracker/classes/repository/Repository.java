@@ -1,4 +1,6 @@
-package com.netcracker.classes;
+package com.netcracker.classes.repository;
+
+import com.netcracker.classes.contract.Contract;
 
 import java.util.Arrays;
 

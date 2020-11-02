@@ -1,4 +1,7 @@
-package com.netcracker.classes;
+package com.netcracker.classes.internet;
+
+import com.netcracker.classes.contract.Contract;
+import com.netcracker.classes.person.Person;
 
 import java.time.LocalDate;
 

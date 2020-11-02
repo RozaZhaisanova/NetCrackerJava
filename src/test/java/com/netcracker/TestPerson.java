@@ -1,7 +1,7 @@
 package com.netcracker;
 
-import com.netcracker.classes.Passport;
-import com.netcracker.classes.Person;
+import com.netcracker.classes.person.Passport;
+import com.netcracker.classes.person.Person;
 import com.netcracker.enums.Gender;
 import org.joda.time.LocalDate;
 import org.junit.Assert;

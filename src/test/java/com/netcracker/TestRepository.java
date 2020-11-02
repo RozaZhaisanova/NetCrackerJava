@@ -1,7 +1,7 @@
 package com.netcracker;
 
-import com.netcracker.classes.Contract;
-import com.netcracker.classes.Repository;
+import com.netcracker.classes.contract.Contract;
+import com.netcracker.classes.repository.Repository;
 import org.junit.*;
 
 public class TestRepository {
