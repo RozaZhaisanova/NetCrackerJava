@@ -35,7 +35,7 @@ public class TestRepository {
 
 
     @Test
-    public void testAddPerson() {
+    public void testAdd() {
         int size=myRepository.size();
         Assert.assertEquals(size,9);
     }

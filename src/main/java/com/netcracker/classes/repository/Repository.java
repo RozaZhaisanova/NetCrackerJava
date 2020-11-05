@@ -1,19 +1,23 @@
 package com.netcracker.classes.repository;
 
+import com.netcracker.classes.ISearcher;
 import com.netcracker.classes.contract.Contract;
+import com.netcracker.classes.contractSorter.ISorter;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Repository {
     /**
      * массив контактов
      */
-    private Contract[] contacts;
     /**
      * ёмкость массива
      */
     private int capacity = 16;
-
+    private ISorter sort;
+    private ISearcher search;
+    private Contract[] contracts;
     /**
      * Индекс следующей ячейки где программа должна добавить следующий экземпляр при
      * вызове метода add
@@ -33,7 +37,7 @@ public class Repository {
      * Конструктор без параметров создает массив с длиной capacity
      */
     public Repository() {
-        this.contacts = new Contract[capacity];
+        this.contracts = new Contract[capacity];
     }
 
     /**
@@ -44,7 +48,7 @@ public class Repository {
      */
     public Repository(int capacity) {
         this.capacity = capacity;
-        this.contacts = new Contract[capacity];
+        this.contracts = new Contract[capacity];
     }
 
 
@@ -59,14 +63,16 @@ public class Repository {
             this.capacity += (this.capacity * 0.75);
             Contract[] arr = new Contract[this.capacity];
 
-            this.copyArray(arr, this.contacts);
-            this.contacts = arr;
+            this.copyArray(arr, this.contracts);
+            this.contracts = arr;
         }
 
-        contacts[this.nextCallIndex] = contact;
+        contracts[this.nextCallIndex] = contact;
         nextCallIndex++;
     }
-
+    public Contract[] getAllContracts(){
+        return contracts;
+    }
     /**
      * Возвращает объект по его id
      *
@@ -77,9 +83,9 @@ public class Repository {
 
 
     public Contract searchByID(int id) {
-        for (int i = 0; i < contacts.length; i++) {
-            if (contacts[i].getID() == id) {
-                return contacts[i];
+        for (int i = 0; i < contracts.length; i++) {
+            if (contracts[i].getID() == id) {
+                return contracts[i];
             }
         }
         return null;
@@ -96,9 +102,9 @@ public class Repository {
             nextCallIndex--;
             for (int i = id - 1; i < nextCallIndex; i++)
 
-            { contacts[i]=contacts[i+1];}
+            { contracts[i]=contracts[i+1];}
 
-            contacts[nextCallIndex] = null;
+            contracts[nextCallIndex] = null;
 
 
 
@@ -132,7 +138,7 @@ public class Repository {
         final int prime = 31;
         int result = 1;
         result = prime * result + capacity;
-        result = prime * result + Arrays.hashCode(contacts);
+        result = prime * result + Arrays.hashCode(contracts);
         return result;
     }
 
@@ -147,11 +153,48 @@ public class Repository {
         Repository other = (Repository) obj;
         if (capacity != other.capacity)
             return false;
-        if (!Arrays.equals(contacts, other.contacts))
+        if (!Arrays.equals(contracts, other.contracts))
             return false;
         return true;
     }
-
+    public void sortBy(Comparator<Contract> comparator){
+        sort.sort(contracts, comparator);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

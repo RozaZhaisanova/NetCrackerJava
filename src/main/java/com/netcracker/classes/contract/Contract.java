@@ -1,10 +1,12 @@
 package com.netcracker.classes.contract;
 
 import com.netcracker.classes.person.Person;
+import com.netcracker.classes.repository.Repository;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
-public class Contract {
+public class Contract implements Comparable<Contract> {
     /**
      * ID контракта
      */
@@ -71,6 +73,9 @@ public class Contract {
     public  int getID(){
         return id;
     }
+    public Integer getId() {
+        return this.id;
+    }
     /**
      Устанавливает number контракта
      @param number
@@ -119,4 +124,25 @@ public class Contract {
     public String toString() {
         return "Contract`s number "+ this.number;
     }
+    public static Comparator<Contract> NumberComparator = new Comparator<Contract>() {
+
+        @Override
+        public int compare(Contract c1, Contract c2) {
+            return (int) (c1.getNumber() - c1.getNumber());
+        }
+    };
+    public int compareTo(Contract c) {
+
+        return (this.id - c.id);
+    }
+
+
+    public static Comparator<Contract> BeginDateComparator = new Comparator<Contract>() {
+
+        @Override
+        public int compare(Contract c1, Contract c2) {
+            return c1.getBeginDate().compareTo(c2.getBeginDate());
+        }
+    };
 }
+
