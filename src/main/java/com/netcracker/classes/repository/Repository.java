@@ -1,11 +1,13 @@
 package com.netcracker.classes.repository;
 
-import com.netcracker.classes.ISearcher;
 import com.netcracker.classes.contract.Contract;
+import com.netcracker.classes.contractSorter.Bubble;
 import com.netcracker.classes.contractSorter.ISorter;
+import com.netcracker.classes.contractSorter.Insertion;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class Repository {
     /**
@@ -15,8 +17,9 @@ public class Repository {
      * ёмкость массива
      */
     private int capacity = 16;
-    private ISorter sort;
-    private ISearcher search;
+    private ISorter sort = new Bubble();
+    private ISorter sort1 = new Insertion();
+
     private Contract[] contracts;
     /**
      * Индекс следующей ячейки где программа должна добавить следующий экземпляр при
@@ -160,7 +163,19 @@ public class Repository {
     public void sortBy(Comparator<Contract> comparator){
         sort.sort(contracts, comparator);
     }
-}
+    public void sortBy1(Comparator<Contract> comparator){
+        sort1.sort(contracts, comparator);
+    }
+    public Contract[] searchBy(Predicate<Contract> predicate){
+        Contract[] result = new Contract[nextCallIndex];
+        int size = 0;
+        for (int i = 0; i < nextCallIndex; i++){
+            if (predicate.test(contracts[i])){
+                result[size++] = contracts[i];
+            }
+        }
+        return result;
+    }}
 
 
 

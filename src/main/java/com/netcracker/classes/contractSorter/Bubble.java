@@ -3,7 +3,9 @@ package com.netcracker.classes.contractSorter;
 import com.netcracker.classes.contract.Contract;
 
 import java.util.Comparator;
-
+/**
+ * Класс реализующий сортировку пузырьком
+ */
 public class Bubble implements ISorter {
 
     @Override

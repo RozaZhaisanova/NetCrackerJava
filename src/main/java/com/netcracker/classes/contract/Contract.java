@@ -124,11 +124,12 @@ public class Contract implements Comparable<Contract> {
     public String toString() {
         return "Contract`s number "+ this.number;
     }
+
     public static Comparator<Contract> NumberComparator = new Comparator<Contract>() {
 
         @Override
         public int compare(Contract c1, Contract c2) {
-            return (int) (c1.getNumber() - c1.getNumber());
+            return (int) (c1.getNumber() - c2.getNumber());
         }
     };
     public int compareTo(Contract c) {
@@ -136,12 +137,25 @@ public class Contract implements Comparable<Contract> {
         return (this.id - c.id);
     }
 
+    public static Comparator<Contract> IdComparator = new Comparator<Contract>() {
 
+        @Override
+        public int compare(Contract c1, Contract c2) {
+            return (int) (c1.getID() - c2.getID());
+        }
+    };
     public static Comparator<Contract> BeginDateComparator = new Comparator<Contract>() {
 
         @Override
         public int compare(Contract c1, Contract c2) {
             return c1.getBeginDate().compareTo(c2.getBeginDate());
+        }
+    };
+    public static Comparator<Contract> EndDateComparator = new Comparator<Contract>() {
+
+        @Override
+        public int compare(Contract c1, Contract c2) {
+            return c1.getEndDate().compareTo(c2.getEndDate());
         }
     };
 }

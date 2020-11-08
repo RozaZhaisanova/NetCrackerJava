@@ -1,8 +1,18 @@
 package com.netcracker;
 
 import com.netcracker.classes.contract.Contract;
+import com.netcracker.classes.person.Passport;
+import com.netcracker.classes.person.Person;
+import com.netcracker.classes.repository.Predicates;
 import com.netcracker.classes.repository.Repository;
+import com.netcracker.enums.Gender;
 import org.junit.*;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestRepository {
     private static Repository myRepository;
@@ -31,9 +41,37 @@ public class TestRepository {
         r.add(p9);
         myRepository=r;
     }
+    @Test
+    public void sort() {
+        Contract c1 = new Contract(1, LocalDate.of(2019, 8, 3), LocalDate.of(2020, 5, 8), new Person(), 223);
+        Contract c2 = new Contract(2, LocalDate.of(2008, 8, 18), LocalDate.of(2012, 3, 16), new Person(), 323);
+        Contract c3 = new Contract(8, LocalDate.of(2009, 8, 18), LocalDate.of(2012, 3, 16), new Person(), 27);
 
-
-
+        Repository rep = new Repository(3);
+        rep.add(c1);
+        rep.add(c2);
+        rep.add(c3);
+        rep.sortBy1(Contract.BeginDateComparator);
+        Contract[] arr = new Contract[rep.getAllContracts().length];
+        arr[0] = c2;
+        arr[1] = c3;
+        arr[2] = c1;
+        assertArrayEquals(rep.getAllContracts(), arr);
+    }
+    @Test
+    public void searchBy() {
+        Contract c1 = new Contract(1, LocalDate.of(2019, 8, 3), LocalDate.of(2020, 5, 8), new Person(), 3);
+        Contract c2 = new Contract(2, LocalDate.of(2008, 8, 18), LocalDate.of(2012, 3, 16), new Person(), 23);
+        Contract c3 = new Contract(8, LocalDate.of(2009, 8, 18), LocalDate.of(2012, 3, 16), new Person(), 27);
+        Repository rep = new Repository(3);
+        rep.add(c1);
+        rep.add(c2);
+        rep.add(c3);
+        org.joda.time.LocalDate date1=new org.joda.time.LocalDate(1999,11,8);
+        Person person=new Person(1,"Name1","Surname1", date1, Gender.MALE,new Passport("LO", 3542));
+        Predicates pred = new Predicates();
+        assertTrue(rep.searchBy(pred.clientPredicate(person)).length > 0);
+    }
     @Test
     public void testAdd() {
         int size=myRepository.size();

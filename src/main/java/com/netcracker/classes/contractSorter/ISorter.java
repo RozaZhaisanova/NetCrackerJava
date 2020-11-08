@@ -4,7 +4,9 @@ import com.netcracker.classes.contract.Contract;
 import com.netcracker.classes.repository.Repository;
 
 import java.util.Comparator;
-
+/**
+ * Интерфейс для сортировки
+ */
 public interface ISorter {
 
 
