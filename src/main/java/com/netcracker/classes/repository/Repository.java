@@ -15,8 +15,7 @@ public class Repository {
      * ёмкость массива
      */
     private int capacity = 16;
-    private ISorter sort = new Bubble();
-    private ISorter sort1 = new Insertion();
+    private ISorter sort = new Insertion();
     /**
      * массив контрактов
      */
@@ -137,13 +136,7 @@ public class Repository {
     public void sortBy(Comparator<Contract> comparator){
         sort.sort(contracts, comparator);
     }
-    /**
-     * Сортирует массив контрактов используя сортировку вставками
-     * @param comparator
-     */
-    public void sortBy1(Comparator<Contract> comparator){
-        sort1.sort(contracts, comparator);
-    }
+
     /**
      * Возвращает репозиторий контрактов по критерию
      * @param predicate

@@ -22,8 +22,7 @@ public class App {
 
         System.out.println(rep.size());
         System.out.println(" Comparator по номеру:\n"+Arrays.toString(rep.getArray()));
-        rep.sortBy1(Contract.BeginDateComparator);
-        System.out.println(" Comparator по начале контракта:\n"+Arrays.toString(rep.getArray()));
+
 
         Contract[] contracts = new Contract[4];
         contracts[0] = new Contract(1, LocalDate.of(2019, 8, 3), LocalDate.of(2020, 5, 8), new Person(), 3);

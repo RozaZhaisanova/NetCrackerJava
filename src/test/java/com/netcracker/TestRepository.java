@@ -41,14 +41,14 @@ public class TestRepository {
     }
     @Test
     public void testSortBy() {
-        Contract c1 = new Contract(1, LocalDate.of(2019, 8, 3), LocalDate.of(2020, 5, 8), new Person(), 223);
+        Contract c1 = new Contract(11, LocalDate.of(2019, 8, 3), LocalDate.of(2020, 5, 8), new Person(), 223);
         Contract c2 = new Contract(2, LocalDate.of(2008, 8, 18), LocalDate.of(2012, 3, 16), new Person(), 323);
         Contract c3 = new Contract(8, LocalDate.of(2009, 8, 18), LocalDate.of(2012, 3, 16), new Person(), 27);
         Repository rep = new Repository(3);
         rep.add(c1);
         rep.add(c2);
         rep.add(c3);
-        rep.sortBy1(Contract.BeginDateComparator);
+        rep.sortBy(Contract.IdComparator);
         Contract[] arr = new Contract[rep.getArray().length];
         arr[0] = c2;
         arr[1] = c3;
