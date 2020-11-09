@@ -73,7 +73,7 @@ public class Repository {
         contracts[this.nextCallIndex] = contact;
         nextCallIndex++;
     }
-    public Contract[] getAllContracts(){
+    public Contract[] getArray(){
         return contracts;
     }
     /**
@@ -166,16 +166,17 @@ public class Repository {
     public void sortBy1(Comparator<Contract> comparator){
         sort1.sort(contracts, comparator);
     }
-    public Contract[] searchBy(Predicate<Contract> predicate){
-        Contract[] result = new Contract[nextCallIndex];
-        int size = 0;
+
+    public Repository searchBy(Predicate<Contract> predicate){
+        Repository rep = new Repository();
         for (int i = 0; i < nextCallIndex; i++){
             if (predicate.test(contracts[i])){
-                result[size++] = contracts[i];
+                rep.add(contracts[i]);
             }
         }
-        return result;
-    }}
+        return rep;
+    }
+}
 
 
 
