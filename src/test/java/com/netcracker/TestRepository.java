@@ -9,10 +9,8 @@ import com.netcracker.enums.Gender;
 import org.junit.*;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertTrue;
 
 public class TestRepository {
     private static Repository myRepository;
@@ -46,7 +44,6 @@ public class TestRepository {
         Contract c1 = new Contract(1, LocalDate.of(2019, 8, 3), LocalDate.of(2020, 5, 8), new Person(), 223);
         Contract c2 = new Contract(2, LocalDate.of(2008, 8, 18), LocalDate.of(2012, 3, 16), new Person(), 323);
         Contract c3 = new Contract(8, LocalDate.of(2009, 8, 18), LocalDate.of(2012, 3, 16), new Person(), 27);
-
         Repository rep = new Repository(3);
         rep.add(c1);
         rep.add(c2);
@@ -71,9 +68,7 @@ public class TestRepository {
         org.joda.time.LocalDate date1=new org.joda.time.LocalDate(1999,11,8);
         Person person=new Person(1,"Name1","Surname1", date1, Gender.MALE,new Passport("LO", 3542));
         Predicates pred = new Predicates();
-
         Repository newRep = rep.searchBy(pred.clientPredicate(person));
-
         assertArrayEquals(newRep.getArray(), rep.searchBy(pred.clientPredicate(person)).getArray());
     }
     @Test
@@ -91,16 +86,11 @@ public class TestRepository {
         Assert.assertEquals(px,p10);
     }
 
-
-
     @Test
     public void testDelete() {
-
         myRepository.deleteByID(2);
         Assert.assertEquals(8, myRepository.size());
     }
-
-
 
     @Test
     public void TestGetSize()

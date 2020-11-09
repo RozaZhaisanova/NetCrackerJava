@@ -13,11 +13,9 @@ public class TestPerson {
     @Test
     public void testGetDateOfBirth() {
         LocalDate date1=new LocalDate(1999,11,8);
-
         Person person=new Person(1,"Name1","Surname1", date1, Gender.MALE,new Passport("LO", 3542));
         LocalDate date2=person.getDateOfBirth();
         Assert.assertEquals(date1, date2);
-
     }
 
     @Test

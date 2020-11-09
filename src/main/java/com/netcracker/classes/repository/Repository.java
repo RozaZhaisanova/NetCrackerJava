@@ -10,31 +10,22 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 
 public class Repository {
-    /**
-     * массив контактов
-     */
+
     /**
      * ёмкость массива
      */
     private int capacity = 16;
     private ISorter sort = new Bubble();
     private ISorter sort1 = new Insertion();
-
+    /**
+     * массив контрактов
+     */
     private Contract[] contracts;
     /**
      * Индекс следующей ячейки где программа должна добавить следующий экземпляр при
      * вызове метода add
      */
     private int nextCallIndex = 0;
-
-    /**
-     * счетчик для итератора
-     */
-    private int iteratorIndex = 0;
-    /**
-     * размер массива
-     */
-    private int size=0;
 
     /**
      * Конструктор без параметров создает массив с длиной capacity
@@ -45,23 +36,18 @@ public class Repository {
 
     /**
      * Конструктор с 1 параметром
-     *
      * @param capacity начальная длина массива
-     *
      */
     public Repository(int capacity) {
         this.capacity = capacity;
         this.contracts = new Contract[capacity];
     }
 
-
-
     /**
-     * Добавляет новый экземпляр класса Contact в массив
-     *
-     * @param contact новый экземпляр который надо добавить
+     * Добавляет новый экземпляр класса Contract в массив
+     * @param contract новый экземпляр который надо добавить
      */
-    public void add(Contract contact) {
+    public void add(Contract contract) {
         if (nextCallIndex >= this.capacity) {
             this.capacity += (this.capacity * 0.75);
             Contract[] arr = new Contract[this.capacity];
@@ -69,8 +55,7 @@ public class Repository {
             this.copyArray(arr, this.contracts);
             this.contracts = arr;
         }
-
-        contracts[this.nextCallIndex] = contact;
+        contracts[this.nextCallIndex] = contract;
         nextCallIndex++;
     }
     public Contract[] getArray(){
@@ -78,59 +63,44 @@ public class Repository {
     }
     /**
      * Возвращает объект по его id
-     *
      * @param id идентификатор объекта
-     * @return Contact по идентификатору id
+     * @return contracts по идентификатору id
      *
      */
-
-
     public Contract searchByID(int id) {
-        for (int i = 0; i < contracts.length; i++) {
-            if (contracts[i].getID() == id) {
-                return contracts[i];
+            for (int i = 0; i < contracts.length; i++) {
+                if (contracts[i].getID() == id) {
+                    return contracts[i];
+                }
             }
-        }
-        return null;
+            return null;
     }
     /**
      * Удаляет объект по его id
-     *
      * @param id идентификатор объекта
-     *
      */
     public void deleteByID(int id) {
         if (id <= nextCallIndex)
         {
             nextCallIndex--;
             for (int i = id - 1; i < nextCallIndex; i++)
-
             { contracts[i]=contracts[i+1];}
-
             contracts[nextCallIndex] = null;
-
-
-
-
         }
     }
     /**
      * копирует данные из одного массива в другой
-     *
      * @param nextArray     новый массив
      * @param previousArray старый массив
-     *
      */
     private void copyArray(Contract[] nextArray, Contract[] previousArray) {
         for (int i = 0; i < previousArray.length; i++) {
             nextArray[i] = previousArray[i];
         }
-
     }
 
     /**
      * Возвращает размер массива
-     *
      * @return размер
      */
     public int size() {
@@ -160,13 +130,25 @@ public class Repository {
             return false;
         return true;
     }
+    /**
+     * Сортирует массив контрактов используя пузрьковую сортировку
+     * @param comparator
+     */
     public void sortBy(Comparator<Contract> comparator){
         sort.sort(contracts, comparator);
     }
+    /**
+     * Сортирует массив контрактов используя сортировку вставками
+     * @param comparator
+     */
     public void sortBy1(Comparator<Contract> comparator){
         sort1.sort(contracts, comparator);
     }
-
+    /**
+     * Возвращает репозиторий контрактов по критерию
+     * @param predicate
+     * @return репозиторий
+     */
     public Repository searchBy(Predicate<Contract> predicate){
         Repository rep = new Repository();
         for (int i = 0; i < nextCallIndex; i++){

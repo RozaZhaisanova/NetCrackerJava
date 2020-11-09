@@ -8,7 +8,6 @@ import java.util.Comparator;
  */
 public class Insertion implements ISorter{
     @Override
-
     public void sort(Contract[] contracts, Comparator<Contract> comparator)
     {
         Contract temp;

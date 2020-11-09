@@ -73,9 +73,7 @@ public class Contract implements Comparable<Contract> {
     public  int getID(){
         return id;
     }
-    public Integer getId() {
-        return this.id;
-    }
+
     /**
      Устанавливает number контракта
      @param number
@@ -94,7 +92,6 @@ public class Contract implements Comparable<Contract> {
     /**
      Устанавливает клиента
      @param client
-     дата конца контракта
      */
     public void setClient(Person client) {
         this.client = client;
