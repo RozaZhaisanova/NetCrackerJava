@@ -1,7 +1,8 @@
-package com.netcracker.classes.person;
+package com.netcracker.person;
 
 import com.netcracker.enums.Gender;
-import org.joda.time.*;
+
+import java.time.LocalDate;
 
 public class Person implements Comparable<Person> {
     /**
@@ -27,36 +28,16 @@ public class Person implements Comparable<Person> {
     /**
      * Паспорт Пользователя
      */
-    private Passport passport;
+    private String passportSeries;
+    private int passportNumber;
+
 
     /**
      * Конструтор без параметров
      */
     public Person() {}
 
-    /**
-     * Конструтор с 6 параметрами
-     * @param id
-     *        id пользователя
-     * @param name
-     *        имя пользователя
-     * @param surname
-     *        фамилия пользователя
-     * @param dateOfBirth
-     *        Дата рождения
-     * @param gender
-     *        пол
-     * @param passport
-     *        номер, серия паспорта
-     */
-    public Person(int id, String name, String surname, LocalDate dateOfBirth,Gender gender,Passport passport) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.dateOfBirth = dateOfBirth;
-        this.gender=gender;
-        this.passport=passport;
-    }
+
 
     /**
      * Конструтор с 4 параметрами
@@ -75,6 +56,15 @@ public class Person implements Comparable<Person> {
         this.surname = surname;
         this.gender=gender;
     }
+
+    public Person(String name, java.time.LocalDate birthDate, Gender gender, String passportSeries, int passportNumber) {
+        this.name = name;
+        this.dateOfBirth = birthDate;
+        this.gender=gender;
+        this.passportSeries=passportSeries;
+        this.passportNumber=passportNumber;
+    }
+
     /**
      Возвращает ID данного пользователя
      @return ID пользователя
@@ -82,7 +72,12 @@ public class Person implements Comparable<Person> {
     public int getID(){
         return id;
     }
-
+    public int getPassportNumber(){
+        return passportNumber;
+    }
+    public String getPassportSeries(){
+        return passportSeries;
+    }
     /**
      Устанавливает ID данного пользователя
      @param id
@@ -153,22 +148,8 @@ public class Person implements Comparable<Person> {
         this.gender=gender;
 
     }
-    /**
-     Возвращает паспорт данного пользователя
-     @return паспорт
-     */
-    public Passport getPassport() {
-        return this.passport;
-    }
-    /**
-     Устанавливает паспорт данного пользователя
-     @param passport
-     Пол
-     */
-    public void setPassport(Passport passport) {
-        this.passport=passport;
 
-    }
+
     /**
      Возвращает возраст пользователя
      return возраст
@@ -238,10 +219,11 @@ public class Person implements Comparable<Person> {
     }
 
 
+    public boolean suchAs(Person person) {
+        return this.passportSeries == person.passportSeries &&
+         this.passportNumber == person.passportNumber;
 
-
-
-
+    }
 
 
 }

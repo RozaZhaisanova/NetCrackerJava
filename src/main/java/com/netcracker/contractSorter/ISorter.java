@@ -1,6 +1,6 @@
-package com.netcracker.classes.contractSorter;
+package com.netcracker.contractSorter;
 
-import com.netcracker.classes.contract.Contract;
+import com.netcracker.contract.Contract;
 import java.util.Comparator;
 /**
  * Интерфейс для сортировки

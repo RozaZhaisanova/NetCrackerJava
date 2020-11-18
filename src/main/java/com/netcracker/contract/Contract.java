@@ -1,7 +1,6 @@
-package com.netcracker.classes.contract;
+package com.netcracker.contract;
 
-import com.netcracker.classes.person.Person;
-import com.netcracker.classes.repository.Repository;
+import com.netcracker.person.Person;
 
 import java.time.LocalDate;
 import java.util.Comparator;
@@ -10,15 +9,15 @@ public class Contract implements Comparable<Contract> {
     /**
      * ID контракта
      */
-    private int id;
+    protected int id;
     /**
      * Дата начала контракта год/месяц/день
      */
-    private LocalDate beginDate;
+    protected LocalDate beginDate;
     /**
      * Дата конца контракта год/месяц/день
      */
-    private LocalDate endDate;
+    protected LocalDate endDate;
     /**
      * Клиент
      */
@@ -27,6 +26,17 @@ public class Contract implements Comparable<Contract> {
      * Номер контракта
      */
     private int number;
+
+    public Contract() {
+
+    }
+
+    public Contract(int id, LocalDate beg, LocalDate end, Person newPerson) {
+        this.id = id;
+        this.beginDate = beg;
+        this.endDate = end;
+        this.client=newPerson;
+    }
 
     /**
      Устанавливает дату начала контракта
@@ -119,7 +129,7 @@ public class Contract implements Comparable<Contract> {
     }
     @Override
     public String toString() {
-        return "Contract`s number "+ this.number;
+        return "Contract`s beginDate "+ this.beginDate;
     }
 
     public static Comparator<Contract> NumberComparator = new Comparator<Contract>() {

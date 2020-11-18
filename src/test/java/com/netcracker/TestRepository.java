@@ -1,14 +1,14 @@
 package com.netcracker;
 
-import com.netcracker.classes.contract.Contract;
-import com.netcracker.classes.person.Passport;
-import com.netcracker.classes.person.Person;
-import com.netcracker.classes.repository.Predicates;
-import com.netcracker.classes.repository.Repository;
+import com.netcracker.contract.Contract;
+import com.netcracker.person.Person;
+import com.netcracker.repository.Predicates;
+import com.netcracker.repository.Repository;
 import com.netcracker.enums.Gender;
 import org.junit.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -65,8 +65,9 @@ public class TestRepository {
         rep.add(c1);
         rep.add(c2);
         rep.add(c3);
-        org.joda.time.LocalDate date1=new org.joda.time.LocalDate(1999,11,8);
-        Person person=new Person(1,"Name1","Surname1", date1, Gender.MALE,new Passport("LO", 3542));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d.MM.yyyy");
+        LocalDate date1 = LocalDate.parse("8.11.1999", dtf);
+        Person person=new Person("Name1", date1, Gender.MALE,"LO", 3542);
         Predicates pred = new Predicates();
         Repository newRep = rep.searchBy(pred.clientPredicate(person));
         assertArrayEquals(newRep.getArray(), rep.searchBy(pred.clientPredicate(person)).getArray());
@@ -98,7 +99,6 @@ public class TestRepository {
         int res=myRepository.size();
         Assert.assertEquals(res,9);
     }
-
 
 
 }

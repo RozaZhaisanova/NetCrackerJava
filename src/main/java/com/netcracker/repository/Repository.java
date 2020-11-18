@@ -1,9 +1,9 @@
-package com.netcracker.classes.repository;
+package com.netcracker.repository;
 
-import com.netcracker.classes.contract.Contract;
-import com.netcracker.classes.contractSorter.Bubble;
-import com.netcracker.classes.contractSorter.ISorter;
-import com.netcracker.classes.contractSorter.Insertion;
+import com.netcracker.contract.Contract;
+import com.netcracker.contract.Internet;
+import com.netcracker.contractSorter.ISorter;
+import com.netcracker.contractSorter.Insertion;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -60,6 +60,7 @@ public class Repository {
     public Contract[] getArray(){
         return contracts;
     }
+
     /**
      * Возвращает объект по его id
      * @param id идентификатор объекта
@@ -151,41 +152,6 @@ public class Repository {
         }
         return rep;
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

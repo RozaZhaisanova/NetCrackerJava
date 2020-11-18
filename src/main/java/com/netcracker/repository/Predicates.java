@@ -1,9 +1,9 @@
-package com.netcracker.classes.repository;
+package com.netcracker.repository;
 import java.time.LocalDate;
 import java.util.function.Predicate;
 
-import com.netcracker.classes.contract.Contract;
-import com.netcracker.classes.person.Person;
+import com.netcracker.contract.Contract;
+import com.netcracker.person.Person;
 /**
  * Класс реализующий предикаты для поиска по критерию
  */

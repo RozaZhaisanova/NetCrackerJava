@@ -1,7 +1,6 @@
-package com.netcracker.classes.mobile;
+package com.netcracker.contract;
 
-import com.netcracker.classes.contract.Contract;
-import com.netcracker.classes.person.Person;
+import com.netcracker.person.Person;
 
 import java.time.LocalDate;
 
@@ -22,6 +21,19 @@ public class Mobile extends Contract {
         this.mb=mb;
         this.sms=sms;
 
+    }
+
+    public Mobile() {
+
+    }
+
+    public Mobile(int id, LocalDate beginDate, LocalDate endDate, Person client, int min, int mb, int sms) {
+        this.id=id;
+        this.beginDate=beginDate;
+        this.endDate=endDate; this.client=client;
+       this.min=min;
+        this.mb=mb;
+        this.sms=sms;
     }
 
     /**

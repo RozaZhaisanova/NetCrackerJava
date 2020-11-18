@@ -5,5 +5,18 @@ package com.netcracker.enums;
  */
 public enum Gender {
     MALE,
-    FEMALE
+    FEMALE;
+    /**
+     * Возвращает пол, преобразует строку в Gender
+     *  @param genderStr пол а форме строки
+     *
+     * @return пол Gender
+     */
+    public static Gender StringToGender(String genderStr)
+    {
+        if(genderStr.toLowerCase()=="male")
+            return Gender.MALE;
+        else return Gender.FEMALE;
+
+    }
 }
