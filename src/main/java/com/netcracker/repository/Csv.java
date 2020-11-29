@@ -7,6 +7,9 @@ import com.netcracker.contract.Television;
 import com.netcracker.enums.ChannelPackage;
 import com.netcracker.enums.Gender;
 import com.netcracker.person.Person;
+import com.netcracker.validators.ContractValidator;
+import com.netcracker.validators.PersonValidator;
+import com.netcracker.validators.Validator;
 import com.opencsv.CSVReader;
 
 import java.io.FileReader;
@@ -58,14 +61,23 @@ public class Csv {
                             Contract newContract = new Internet(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, Integer.parseInt(allData.get(i)[8]));
+                            Validator[] validators = new Validator[2];
+                            validators[0] = new PersonValidator();
+                            validators[1] = new ContractValidator();
+                            Validator.validation(validators, newContract);
                             rep.add(newContract);
                             break;
                         case "mobile":
                             String[] mob = allData.get(i)[8].split(",");
-                            Contract newContract2 = new Mobile(
+                            Contract newContract2 = new Contract();
+                             newContract2 = new Mobile(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, Integer.parseInt(mob[0]), Integer.parseInt(mob[1]), Integer.parseInt(mob[2]));
-                            rep.add(newContract2);
+                            Validator[] validators2 = new Validator[2];
+                            validators2[0] = new PersonValidator();
+                            validators2[1] = new ContractValidator();
+                            Validator.validation(validators2, newContract2);
+                             rep.add(newContract2);
                             break;
                         case "television":
                             ChannelPackage cp;
@@ -86,6 +98,10 @@ public class Csv {
                             Contract newContract3 = new Television(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, cp);
+                            Validator[] validators3 = new Validator[2];
+                            validators3[0] = new PersonValidator();
+                            validators3[1] = new ContractValidator();
+                            Validator.validation(validators3, newContract3);
                             rep.add(newContract3);
                     }
 

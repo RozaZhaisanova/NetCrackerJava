@@ -1,11 +1,16 @@
 package com.netcracker;
 
+import com.netcracker.contract.Contract;
+import com.netcracker.contract.Mobile;
+import com.netcracker.person.Person;
 import com.netcracker.repository.Csv;
 import com.netcracker.repository.Repository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class App {
     public static void main(String[] args) throws Exception{
@@ -25,5 +30,16 @@ public class App {
         Repository repo=new Repository();
         Repository rep= Csv.readAllDataFromCSV(csvFile,repo);
         System.out.println(" Имя клиента третьего в списке контракта:\n"+rep.getArray()[2].getClient());
+        Person newPerson = new Person();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d.MM.yyyy");
+
+        LocalDate beg = LocalDate.parse("2.12.1999", dtf);
+        LocalDate end = LocalDate.parse("3.12.1999", dtf);
+        Contract newContract2 = /*new Contract();
+        newContract2 =*/ new Mobile(
+               2, beg, end,
+                newPerson, 21, 3, 32);
+        rep.add(newContract2);
+        System.out.println(" Айди контракта newContract2:\n"+ newContract2.getID());
 
     }}

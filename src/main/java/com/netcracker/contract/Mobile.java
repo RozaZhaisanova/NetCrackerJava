@@ -31,7 +31,7 @@ public class Mobile extends Contract {
         this.id=id;
         this.beginDate=beginDate;
         this.endDate=endDate; this.client=client;
-       this.min=min;
+        this.min=min;
         this.mb=mb;
         this.sms=sms;
     }

@@ -20,5 +20,7 @@ public class TestReader{
         Assert.assertEquals(834, c.getID());
         Person p=rep.getArray()[0].getClient();
         Assert.assertEquals("ivan", p.getName());
+        //Assert.assertEquals(65, c.getMaxSpeed());
+
     }
 }
