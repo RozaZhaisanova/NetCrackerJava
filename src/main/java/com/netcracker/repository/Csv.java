@@ -35,6 +35,9 @@ public class Csv {
             ArrayList<Person> persons=new  ArrayList<Person>();
             FileReader filereader = new FileReader(path);
             CSVReader reader = new CSVReader(filereader, ';');
+            ContractValidator contractValidator = new ContractValidator();
+            PersonValidator personValidator = new PersonValidator();
+
             try {
                 List<String[]> allData = reader.readAll();
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d.MM.yyyy");
@@ -50,6 +53,7 @@ public class Csv {
                     }
                     if (newPerson == null) {
                         newPerson = new Person(allData.get(i)[3], LocalDate.parse(allData.get(i)[4], dtf), Gender.StringToGender(allData.get(i)[5]), passport[0], Integer.parseInt(passport[1]));
+                        personValidator.validate(newPerson);
                         persons.add(newPerson);
                     }
 
@@ -61,10 +65,7 @@ public class Csv {
                             Contract newContract = new Internet(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, Integer.parseInt(allData.get(i)[8]));
-                            Validator[] validators = new Validator[2];
-                            validators[0] = new PersonValidator();
-                            validators[1] = new ContractValidator();
-                            Validator.validation(validators, newContract);
+                            contractValidator.validate(newContract);
                             rep.add(newContract);
                             break;
                         case "mobile":
@@ -73,10 +74,7 @@ public class Csv {
                              newContract2 = new Mobile(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, Integer.parseInt(mob[0]), Integer.parseInt(mob[1]), Integer.parseInt(mob[2]));
-                            Validator[] validators2 = new Validator[2];
-                            validators2[0] = new PersonValidator();
-                            validators2[1] = new ContractValidator();
-                            Validator.validation(validators2, newContract2);
+                             contractValidator.validate(newContract2);
                              rep.add(newContract2);
                             break;
                         case "television":
@@ -98,10 +96,7 @@ public class Csv {
                             Contract newContract3 = new Television(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, cp);
-                            Validator[] validators3 = new Validator[2];
-                            validators3[0] = new PersonValidator();
-                            validators3[1] = new ContractValidator();
-                            Validator.validation(validators3, newContract3);
+                            contractValidator.validate(newContract3);
                             rep.add(newContract3);
                     }
 

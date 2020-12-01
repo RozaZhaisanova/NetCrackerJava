@@ -2,9 +2,11 @@ package com.netcracker;
 
 import com.netcracker.contract.Contract;
 import com.netcracker.contract.Mobile;
+import com.netcracker.enums.Gender;
 import com.netcracker.person.Person;
 import com.netcracker.repository.Csv;
 import com.netcracker.repository.Repository;
+import com.netcracker.validators.PersonValidator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -41,5 +43,10 @@ public class App {
                 newPerson, 21, 3, 32);
         rep.add(newContract2);
         System.out.println(" Айди контракта newContract2:\n"+ newContract2.getID());
+        LocalDate date1 = LocalDate.parse("8.11.1999", dtf);
+        Person person=new Person("Name", date1, Gender.MALE,"LO", 3542);
+        PersonValidator personValidator = new PersonValidator();
+
+        System.out.println(personValidator.validate(person).size());
 
     }}

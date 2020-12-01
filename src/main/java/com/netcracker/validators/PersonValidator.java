@@ -1,39 +1,60 @@
 package com.netcracker.validators;
+import com.netcracker.person.Person;
+import java.util.LinkedList;
+import java.util.List;
 
-import com.netcracker.contract.Contract;
-import com.netcracker.enums.Gender;
-
-import java.time.LocalDate;
 /**
  * Класс проверяет Person
  */
-public class PersonValidator extends Validator {
+public class PersonValidator extends Validator<Person> {
+
+    private static final int MIN_NAME_LENGTH = 2;
+    private static final int MAX_NAME_LENGTH = 25;
+    private static final int PASSPORT_SERIES_LENGTH = 4;
+
+
     /**
-     * Возвращает объект Validator
-     *  @param contract контракт
-     *  @return Validator
+     * @param person клиент
+     * @return результат проверки
      */
     @Override
-    public Validator validator(Contract contract) {
-        LocalDate now = LocalDate.now();
-        if (contract.getClient().getName().equals("")) {
-            this.setMessage("Имя пусто");
-            this.setStatus("error");
-            this.setMistake("Паспорт клиента: "+contract.getClient().getPassportSeries()+" "+contract.getClient().getPassportNumber());
-        } else if (contract.getClient().getDateOfBirth().compareTo(now) > 0) {
-            this.setMessage("Дата рождения позже настоящего момента");
-            this.setStatus("error");
-            this.setMistake(contract.getClient().getDateOfBirth().toString());
-        } else if (contract.getClient().getPassportSeries().length() != 4 ||
-            10000>contract.getClient().getPassportNumber()||contract.getClient().getPassportNumber()>99999) {
-            this.setMessage("Неверные паспортные данные");
-            this.setStatus("warning");
-            this.setMistake(contract.getClient().getPassportNumber()+ " " +
-                    contract.getClient().getPassportSeries());
-        } else {
-            this.setMessage("Успешно");
-            this.setStatus("successful");
-            this.setMistake("Вы молодец");}
-        return this;
+    public List<Result> validate(Person person) {
+        List<Result> result = new LinkedList<>();
+
+        result.addAll(checkName(person.getName()));
+        result.addAll(checkPassportSeries(person.getPassportSeries()));
+        return result;
     }
-}
+
+    /**
+     * @param name имя
+     * @return результат
+     */
+    public List<Result> checkName(String name) {
+        List<Result> result = new LinkedList<>();
+
+        if ( MIN_NAME_LENGTH > name.length()||name.length() > MAX_NAME_LENGTH) {
+            result.add(new Result("Имя  " + name + " выходит за пределы допустимого значения "));
+        }
+
+        return result;
+    }
+
+    /**
+     * @param passportSeries номер паспорта
+     * @return результат
+     */
+    public List<Result> checkPassportSeries(String passportSeries) {
+        List<Result> result = new LinkedList<>();
+
+        if (passportSeries.length() != PASSPORT_SERIES_LENGTH) {
+            result.add(new Result("Серия паспорта  " + passportSeries + " выходит за пределы допустимого значения "));
+        }
+
+
+        return result;
+    }}
+
+
+
+
