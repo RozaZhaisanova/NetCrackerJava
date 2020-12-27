@@ -4,6 +4,7 @@ import com.netcracker.contract.Contract;
 import com.netcracker.contract.Internet;
 import com.netcracker.contractSorter.ISorter;
 import com.netcracker.contractSorter.Insertion;
+import com.netcracker.di.AutoInjectable;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -15,7 +16,8 @@ public class Repository {
      * ёмкость массива
      */
     private int capacity = 16;
-    private ISorter sort = new Insertion();
+   @AutoInjectable
+    private ISorter sort /*=new Insertion()*/;
     /**
      * массив контрактов
      */
