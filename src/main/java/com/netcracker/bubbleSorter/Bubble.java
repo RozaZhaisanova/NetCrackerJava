@@ -1,4 +1,4 @@
-package com.netcracker.sorter;
+package com.netcracker.bubbleSorter;
 
 import com.netcracker.contract.Contract;
 import com.netcracker.contractSorter.ISorter;

@@ -4,6 +4,7 @@ import com.netcracker.contract.Contract;
 import com.netcracker.contract.Internet;
 import com.netcracker.contract.Mobile;
 import com.netcracker.contract.Television;
+import com.netcracker.di.AutoInjectable;
 import com.netcracker.enums.ChannelPackage;
 import com.netcracker.enums.Gender;
 import com.netcracker.person.Person;
@@ -17,10 +18,25 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.netcracker.validators.Status.ERROR;
+
 /**
  * Класс добавляющий в репозиторий контракты из файла csv
  */
 public class Csv {
+    @AutoInjectable(clazz = Validator.class)
+    private static List<Validator> validators;
+    private static boolean isValidate(Contract contract){
+        boolean result = true;
+        for(Validator validator : validators){
+            Validator res = validator.validate(contract);
+            if(res.getStatus() == ERROR){
+                result = false;
+            }
+        }
+        return result;
+    }
     /**
      * Возвращает репозиторий с добавленными контрактами
      *  @param path путь файла
@@ -53,7 +69,6 @@ public class Csv {
                     }
                     if (newPerson == null) {
                         newPerson = new Person(allData.get(i)[3], LocalDate.parse(allData.get(i)[4], dtf), Gender.StringToGender(allData.get(i)[5]), passport[0], Integer.parseInt(passport[1]));
-                        personValidator.validate(newPerson);
                         persons.add(newPerson);
                     }
 
@@ -65,8 +80,9 @@ public class Csv {
                             Contract newContract = new Internet(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, Integer.parseInt(allData.get(i)[8]));
-                            contractValidator.validate(newContract);
-                            rep.add(newContract);
+                            if(isValidate(newContract)) {
+                                rep.add(newContract);
+                            }
                             break;
                         case "mobile":
                             String[] mob = allData.get(i)[8].split(",");
@@ -74,8 +90,9 @@ public class Csv {
                              newContract2 = new Mobile(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, Integer.parseInt(mob[0]), Integer.parseInt(mob[1]), Integer.parseInt(mob[2]));
-                             contractValidator.validate(newContract2);
-                             rep.add(newContract2);
+                            if(isValidate(newContract2)) {
+                                rep.add(newContract2);
+                            }
                             break;
                         case "television":
                             ChannelPackage cp;
@@ -96,8 +113,9 @@ public class Csv {
                             Contract newContract3 = new Television(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, cp);
-                            contractValidator.validate(newContract3);
-                            rep.add(newContract3);
+                            if(isValidate(newContract3)) {
+                                rep.add(newContract3);
+                            }
                     }
 
 
@@ -118,8 +136,6 @@ public class Csv {
         {
             e.printStackTrace();
         }
-
         return rep;
-
     }
 }

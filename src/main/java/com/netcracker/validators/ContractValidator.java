@@ -1,39 +1,28 @@
 package com.netcracker.validators;
 import com.netcracker.contract.Contract;
-import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
 
-public class ContractValidator extends Validator<Contract> {
-    private  PersonValidator personValidator = new PersonValidator();
+import static com.netcracker.validators.Status.*;
+
+public class ContractValidator extends Validator {
 
     /**
      * @param contract контракт
-     * @return результат проверки
+     * @return validate
      */
     @Override
-    public List<Result> validate(Contract contract) {
-        List<Result> result = new LinkedList<>();
-        result.addAll(personValidator.validate(contract.getClient()));
-        result.addAll(checkDates(contract.getBeginDate(), contract.getEndDate()));
-        return result;
-    }
+    public Validator validate(Contract contract) {
+        if (contract.getBeginDate().isAfter(contract.getEndDate())) {
+            this.setMessage("Начало контракта раньше конца контракта" );
+            this.setStatus(ERROR);
 
-    /**
-     * @param beginDate дата начала контракта
-     * @param endDate дата конца контракта
-     * @return результат проверки
-     */
-    public List<Result> checkDates(LocalDate beginDate, LocalDate endDate) {
-        List<Result> result = new LinkedList<>();
+        } else if (contract.getBeginDate().compareTo(contract.getEndDate()) == 0) {
+            this.setMessage("Начало контракта и конец контракта равны");
+            this.setStatus(RED_RISK);
 
-        if (beginDate.isAfter(endDate)) {
-            result.add(new Result("Начало контракта " + beginDate + " раньше конца контракта" + endDate));
+        } else {
+            this.setStatus(OK);
         }
-        else if (beginDate.compareTo(endDate) == 0) {
-            result.add(new Result("Начало контракта " + beginDate + " и конец контракта " + endDate+" равны"));
-        }
-        return result;
+        return this;
     }
 
 

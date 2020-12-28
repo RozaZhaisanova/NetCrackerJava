@@ -1,19 +1,32 @@
 package com.netcracker.validators;
-import java.util.List;
+
+import com.netcracker.contract.Contract;
 
 /**
  * Абстрактный класс для проверки
  */
-public abstract class Validator <T>{
+public abstract class Validator {
 
-  public abstract List<Result> validate(T t);
+    private String message;
+    private Status status;
 
-  public boolean validated(T t) {
-        for (Result result : validate(t)) {
-            if (result.getStatus() == Status.ERROR) {
-                return false;
-            }
-        }
-        return true;
+    public Status getStatus() {
+        return status;
     }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    abstract public Validator validate(Contract contract);
+
+
 }

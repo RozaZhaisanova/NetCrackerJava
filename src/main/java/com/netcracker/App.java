@@ -47,6 +47,6 @@ public class App {
         Person person=new Person("Name", date1, Gender.MALE,"LO", 3542);
         PersonValidator personValidator = new PersonValidator();
 
-        System.out.println(personValidator.validate(person).size());
+      //  System.out.println(personValidator.validate(person).size());
 
     }}
