@@ -7,6 +7,7 @@ import static com.netcracker.validators.Status.*;
  * Класс проверяет Person
  */
 public class PersonValidator extends Validator {
+    public PersonValidator() {}
 
     private static final int MIN_NAME_LENGTH = 2;
     private static final int MAX_NAME_LENGTH = 25;

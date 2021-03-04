@@ -12,6 +12,7 @@ import com.netcracker.validators.ContractValidator;
 import com.netcracker.validators.PersonValidator;
 import com.netcracker.validators.Validator;
 import com.opencsv.CSVReader;
+import org.apache.logging.log4j.*;
 
 import java.io.FileReader;
 import java.time.LocalDate;
@@ -27,6 +28,8 @@ import static com.netcracker.validators.Status.ERROR;
 public class Csv {
     @AutoInjectable(clazz = Validator.class)
     private static List<Validator> validators;
+    private static final Logger logger = LogManager.getLogger(Csv.class);
+
     private static boolean isValidate(Contract contract){
         boolean result = true;
         for(Validator validator : validators){
@@ -51,9 +54,9 @@ public class Csv {
             ArrayList<Person> persons=new  ArrayList<Person>();
             FileReader filereader = new FileReader(path);
             CSVReader reader = new CSVReader(filereader, ';');
-            ContractValidator contractValidator = new ContractValidator();
+       /*     ContractValidator contractValidator = new ContractValidator();
             PersonValidator personValidator = new PersonValidator();
-
+*/
             try {
                 List<String[]> allData = reader.readAll();
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d.MM.yyyy");
@@ -109,7 +112,6 @@ public class Csv {
                                 default:
                                     throw new IllegalStateException("Unexpected value: " + allData.get(i)[8].toLowerCase());
                             }
-
                             Contract newContract3 = new Television(
                                     Integer.parseInt(allData.get(i)[0]), beg, end,
                                     newPerson, cp);
@@ -117,8 +119,6 @@ public class Csv {
                                 rep.add(newContract3);
                             }
                     }
-
-
                 }
             }
 

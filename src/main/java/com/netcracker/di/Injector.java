@@ -1,6 +1,9 @@
 package com.netcracker.di;
 
+import com.netcracker.exceptions.InjectionException;
+
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,29 +21,33 @@ public class Injector {
      * @param object - проверяем поля данного объекта
      * @return - сущность с внедренным свойством
      */
-    public static <T> T inject(T object) throws Exception {
+    public static <T> T inject(T object) throws InjectionException {
         String[] packageName = Injector.class.getAnnotation(Configuration.class).packages();
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
-            if (field.isAnnotationPresent(AutoInjectable.class)) {
-                if (field.getGenericType().getTypeName().startsWith("java.util.List<")) {
-                    List<Class> classes = getClasses(packageName, field.getAnnotation(AutoInjectable.class).clazz());
-                    field.setAccessible(true);
-                    List<Object> objectList = new ArrayList<Object>();
-                    for(Class currentClass : classes){
-                        objectList.add(currentClass.newInstance());
+            try {
+                if (field.isAnnotationPresent(AutoInjectable.class)) {
+                    if (field.getGenericType().getTypeName().startsWith("java.util.List<")) {
+                        List<Class> classes = getClasses(packageName, field.getAnnotation(AutoInjectable.class).clazz());
+                        field.setAccessible(true);
+                        List<Object> objectList = new ArrayList<Object>();
+                        for(Class currentClass : classes){
+                            objectList.add(currentClass.newInstance());
+                        }
+                        field.set(object, objectList);
+                    } else {
+                        List<Class> classes = getClasses(packageName, field.getType());
+                        if (classes.size() > 1) {
+                            throw new InjectionException("Найдено больше одного класса");
+                        } else if (classes.size() == 0) {
+                            throw new InjectionException("Ничего не найдено");
+                        }
+                        field.setAccessible(true);
+                        field.set(object, classes.get(0).newInstance());
                     }
-                    field.set(object, objectList);
-                } else {
-                    List<Class> classes = getClasses(packageName, field.getType());
-                    if (classes.size() > 1) {
-                        throw new Exception("Найдено больше одного класса");
-                    } else if (classes.size() == 0) {
-                        throw new Exception("Ничего не найдено");
-                    }
-                    field.setAccessible(true);
-                    field.set(object, classes.get(0).newInstance());
                 }
+            } catch (IllegalAccessException | InstantiationException | ClassNotFoundException e) {
+                throw new InjectionException(e);
             }
         }
         return object;

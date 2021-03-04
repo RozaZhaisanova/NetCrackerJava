@@ -4,7 +4,7 @@ import com.netcracker.contract.Contract;
 import static com.netcracker.validators.Status.*;
 
 public class ContractValidator extends Validator {
-
+    public ContractValidator() {}
     /**
      * @param contract контракт
      * @return validate

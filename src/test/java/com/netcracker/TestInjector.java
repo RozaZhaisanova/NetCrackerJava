@@ -1,12 +1,11 @@
 package com.netcracker;
 
-
 import com.netcracker.di.Injector;
 import com.netcracker.repository.Csv;
 import com.netcracker.repository.Repository;
+import com.netcracker.validators.Status;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.lang.reflect.Field;
 
@@ -30,7 +29,7 @@ public class TestInjector {
         }
     }
     @Test
-    public void injectValid()  {
+    public void injectValid() throws IOException, ClassNotFoundException {
         try{
             Csv csv = new Csv();
             Injector.inject(csv);
@@ -39,7 +38,6 @@ public class TestInjector {
                 if(field.getName().equals("validators")){
                     field.setAccessible(true);
                     Assert.assertNotNull(field.get(csv));
-
                 }
             }
         }
@@ -47,5 +45,4 @@ public class TestInjector {
             System.out.println(e.getMessage());
         }
     }
-
 }
