@@ -5,9 +5,27 @@ package com.netcracker.enums;
 
 
     public enum ChannelPackage {
-        STANDARD,
-        SPORT,
-        FAMILY
+        STANDARD("standard"),
+        SPORT("sport"),
+        FAMILY("family");
+    private final String channelPackage;
 
+    ChannelPackage(String channelPackage) {
+        this.channelPackage = channelPackage;
+    }
+
+    public String getChannelPackage() {
+        return channelPackage;
+    }
+    public static ChannelPackage fromString(String value) {
+        if (value != null) {
+            for (ChannelPackage cp : ChannelPackage.values()) {
+                if (value.equalsIgnoreCase(cp.channelPackage)) {
+                    return cp;
+                }
+            }
+        }
+        throw new IllegalArgumentException("No such value");
+    }
     }
 

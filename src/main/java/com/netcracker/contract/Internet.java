@@ -21,7 +21,11 @@ public class Internet extends Contract {
 
     }
 
+    public Internet(int id, LocalDate beginDate, LocalDate endDate, Person client, int number, int maxSpeed) {
+        super(id, beginDate, endDate, client, number);
+        this.setMaxSpeed(maxSpeed);
 
+    }
 
     /**
      Возвращает максимальную скорость

@@ -37,4 +37,10 @@ public class Television extends Contract {
         this.channelPackage = channelPackage;
     }
 
+    @Override
+    public String toString() {
+        return "Television{" +
+                "channelPackage=" + channelPackage +
+                '}';
+    }
 }

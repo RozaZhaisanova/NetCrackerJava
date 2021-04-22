@@ -30,7 +30,8 @@ public class Mobile extends Contract {
     public Mobile(int id, LocalDate beginDate, LocalDate endDate, Person client, int min, int mb, int sms) {
         this.id=id;
         this.beginDate=beginDate;
-        this.endDate=endDate; this.client=client;
+        this.endDate=endDate;
+        this.client=client;
         this.min=min;
         this.mb=mb;
         this.sms=sms;

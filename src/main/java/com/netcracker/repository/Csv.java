@@ -12,7 +12,6 @@ import com.netcracker.validators.ContractValidator;
 import com.netcracker.validators.PersonValidator;
 import com.netcracker.validators.Validator;
 import com.opencsv.CSVReader;
-import org.apache.logging.log4j.*;
 
 import java.io.FileReader;
 import java.time.LocalDate;
@@ -28,7 +27,6 @@ import static com.netcracker.validators.Status.ERROR;
 public class Csv {
     @AutoInjectable(clazz = Validator.class)
     private static List<Validator> validators;
-    private static final Logger logger = LogManager.getLogger(Csv.class);
 
     private static boolean isValidate(Contract contract){
         boolean result = true;

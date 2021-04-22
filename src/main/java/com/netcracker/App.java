@@ -1,52 +1,43 @@
 package com.netcracker;
 
 import com.netcracker.contract.Contract;
+import com.netcracker.contract.Internet;
 import com.netcracker.contract.Mobile;
-import com.netcracker.enums.Gender;
+import com.netcracker.contract.Television;
+import com.netcracker.db.DatabaseParser;
+import com.netcracker.db.IDatabaseParser;
+import com.netcracker.enums.ChannelPackage;
 import com.netcracker.person.Person;
-import com.netcracker.repository.Csv;
-import com.netcracker.repository.Repository;
-import com.netcracker.validators.PersonValidator;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class App {
     public static void main(String[] args) throws Exception{
-        String csvFile = "src\\main\\resources\\contracts.csv";
-        String line = "";
-        String cvsSplitBy = ";";
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-            while ((line = br.readLine()) != null) {
-                String[]c = line.split(cvsSplitBy);
-                System.out.println("др клиента[birthday = " + c[4]+ " , пол = " + c[5]+ " , паспорт =" + c[6]+ "]");
-            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        Person p1 = new Person(1,"nam1","surnam1",LocalDate.of(1999, 8, 3));
+        Person p2 = new Person(2,"nam2","surnam2",LocalDate.of(1999, 8, 13));
+        Contract c1 = new Internet(1, LocalDate.of(2019, 8, 3), LocalDate.of(2020, 5, 8), p1, 4,3);
+        Contract c2 = new Mobile(2, LocalDate.of(2008, 8, 18), LocalDate.of(2012, 3, 16), p1, 23,3333,10000,400);
+        Contract c3 = new Television(8, LocalDate.of(2009, 8, 18), LocalDate.of(2012, 3, 16), p2, 27, ChannelPackage.SPORT);
+
+
+        IDatabaseParser dbReader = new DatabaseParser();
+        dbReader.savePerson(p1);
+        dbReader.savePerson(p2);
+        dbReader.saveContract(c1);
+        dbReader.saveContract(c2);
+        dbReader.saveContract(c3);
+
+        try {
+            dbReader.getAllClients();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-
-        Repository repo=new Repository();
-        Repository rep= Csv.readAllDataFromCSV(csvFile,repo);
-        System.out.println(" Имя клиента третьего в списке контракта:\n"+rep.getArray()[2].getClient());
-        Person newPerson = new Person();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d.MM.yyyy");
-
-        LocalDate beg = LocalDate.parse("2.12.1999", dtf);
-        LocalDate end = LocalDate.parse("3.12.1999", dtf);
-        Contract newContract2 = /*new Contract();
-        newContract2 =*/ new Mobile(
-               2, beg, end,
-                newPerson, 21, 3, 32);
-        rep.add(newContract2);
-        System.out.println(" Айди контракта newContract2:\n"+ newContract2.getID());
-        LocalDate date1 = LocalDate.parse("8.11.1999", dtf);
-        Person person=new Person("Name", date1, Gender.MALE,"LO", 3542);
-        PersonValidator personValidator = new PersonValidator();
-
-      //  System.out.println(personValidator.validate(person).size());
-
-    }}
+        try {
+            dbReader.getAllContracts();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+}

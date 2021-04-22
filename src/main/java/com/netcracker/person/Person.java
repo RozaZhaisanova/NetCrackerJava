@@ -56,7 +56,12 @@ public class Person implements Comparable<Person> {
         this.surname = surname;
         this.gender=gender;
     }
-
+    public Person(int id, String name, String surname,LocalDate birthday) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBirth=birthday;
+    }
     public Person(String name, java.time.LocalDate birthDate, Gender gender, String passportSeries, int passportNumber) {
         this.name = name;
         this.dateOfBirth = birthDate;
