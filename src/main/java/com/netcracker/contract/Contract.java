@@ -1,10 +1,13 @@
 package com.netcracker.contract;
 
 import com.netcracker.person.Person;
+import com.netcracker.xml.ContractAdapter;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.Comparator;
 
+@XmlJavaTypeAdapter(ContractAdapter.class)
 public class Contract implements Comparable<Contract> {
     /**
      * ID контракта

@@ -1,29 +1,42 @@
 package com.netcracker.person;
 
 import com.netcracker.enums.Gender;
+import com.netcracker.xml.LocalDateAdapter;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
+@XmlRootElement(name = "client")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Person implements Comparable<Person> {
     /**
      * ID Пользователя
      */
+    @XmlElement
     private int id;
     /**
      * Имя Пользователя
      */
+    @XmlElement
     private String name;
     /**
      * Фамилия Пользователя
      */
+    @XmlElement
     private String surname;
     /**
      * Дата рождения год/месяц/день
      */
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate dateOfBirth;
     /**
      * Пол Пользователя
      */
+    @XmlElement
     private Gender gender;
     /**
      * Паспорт Пользователя
@@ -61,6 +74,13 @@ public class Person implements Comparable<Person> {
         this.name = name;
         this.surname = surname;
         this.dateOfBirth=birthday;
+    }
+    public Person(int id, String name, String surname,LocalDate birthday,Gender gender) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBirth=birthday;
+        this.gender=gender;
     }
     public Person(String name, java.time.LocalDate birthDate, Gender gender, String passportSeries, int passportNumber) {
         this.name = name;

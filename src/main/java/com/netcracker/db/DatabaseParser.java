@@ -89,14 +89,14 @@ public class DatabaseParser implements IDatabaseParser {
         String contractType = contract.getClass().getName().replace("com.netcracker.contract.", "");
         switch (contractType) {
             case "Internet":
-                insertTableSQL = "INSERT INTO contracts"
+                insertTableSQL = "insert into contracts"
                         + "(\"contractId\", "
                         + "\"numberContract\", "
                         + "\"begin\", "
                         + "        \"end\", "
                         + "        \"descriptor\", "
                         + "        \"maxSpeed\", "
-                        + "        \"clientId\") " + "VALUES"
+                        + "        \"clientId\") " + "values"
                         + "(" + contract.getID() + ", " +
                         contract.getNumber() + ", '" +
                         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.000").format(begin) + "', '" +
@@ -106,14 +106,14 @@ public class DatabaseParser implements IDatabaseParser {
                         contract.getClient().getID() + ")";
             break;
             case "Television":
-                insertTableSQL = "INSERT INTO contracts"
+                insertTableSQL = "insert into contracts"
                         + "(\"contractId\", "
                         + "\"numberContract\", "
                         + "\"begin\", "
                         + "        \"end\", "
                         + "        \"channelPackage\", "
                         + "        \"descriptor\", "
-                        + "        \"clientId\") " + "VALUES"
+                        + "        \"clientId\") " + "values"
                         + "(" + contract.getID() + ", " +
                         contract.getNumber() + ", '" +
                         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.000").format(begin) + "', '" +
@@ -123,7 +123,7 @@ public class DatabaseParser implements IDatabaseParser {
                         contract.getClient().getID() + ")";
                 break;
             case "Mobile":
-                insertTableSQL = "INSERT INTO contracts"
+                insertTableSQL = "insert into contracts"
                         + "(\"contractId\", "
                         + "\"numberContract\", "
                         + "\"begin\", "
@@ -132,7 +132,7 @@ public class DatabaseParser implements IDatabaseParser {
                         + "        \"min\", "
                         + "        \"sms\", "
                         + "        \"mb\", "
-                        + "        \"clientId\") " + "VALUES"
+                        + "        \"clientId\") " + "values"
                         + "(" + contract.getID() + ", " +
                         contract.getNumber() + ", '" +
                         new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.000").format(begin) + "', '" +
@@ -168,7 +168,7 @@ public class DatabaseParser implements IDatabaseParser {
     public void  getAllContracts() throws SQLException {
         Connection dbConnection = null;
         Statement statement = null;
-        String selectTableSQL = "SELECT * from contracts c1 left join clients c on c1.\"clientId\" = c.id";
+        String selectTableSQL = "select * from contracts c1 left join clients c on c1.\"clientId\" = c.id";
         try {
             dbConnection = getDBConnection();
             statement = dbConnection.createStatement();
@@ -203,7 +203,7 @@ public class DatabaseParser implements IDatabaseParser {
     public void getAllClients() throws SQLException {
         Connection dbConnection = null;
         Statement statement = null;
-        String selectTableSQL = "SELECT c.* from clients c";
+        String selectTableSQL = "select c.* from clients c";
         try {
             dbConnection = getDBConnection();
             statement = dbConnection.createStatement();

@@ -1,26 +1,31 @@
 package com.netcracker.repository;
 
+import com.netcracker.bubbleSorter.Bubble;
 import com.netcracker.contract.Contract;
-import com.netcracker.contract.Internet;
 import com.netcracker.contractSorter.ISorter;
 import com.netcracker.contractSorter.Insertion;
 import com.netcracker.di.AutoInjectable;
 
+import javax.xml.bind.annotation.*;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "repository")
 public class Repository {
 
     /**
      * ёмкость массива
      */
     private int capacity = 16;
-   @AutoInjectable
+    @AutoInjectable
+    @XmlElements({@XmlElement(type = Bubble.class), @XmlElement(type = Insertion.class)})
     private ISorter sort /*=new Insertion()*/;
     /**
      * массив контрактов
      */
+    @XmlElement(name = "contract")
     private Contract[] contracts;
     /**
      * Индекс следующей ячейки где программа должна добавить следующий экземпляр при

@@ -8,6 +8,7 @@ import com.netcracker.db.DatabaseParser;
 import com.netcracker.db.IDatabaseParser;
 import com.netcracker.enums.ChannelPackage;
 import com.netcracker.person.Person;
+import com.netcracker.repository.Repository;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -20,7 +21,11 @@ public class App {
         Contract c1 = new Internet(1, LocalDate.of(2019, 8, 3), LocalDate.of(2020, 5, 8), p1, 4,3);
         Contract c2 = new Mobile(2, LocalDate.of(2008, 8, 18), LocalDate.of(2012, 3, 16), p1, 23,3333,10000,400);
         Contract c3 = new Television(8, LocalDate.of(2009, 8, 18), LocalDate.of(2012, 3, 16), p2, 27, ChannelPackage.SPORT);
-
+        Repository r = new Repository();
+        r.add(c1);
+        r.add(c2);
+        r.add(c3);
+        System.out.println(r.size());
 
         IDatabaseParser dbReader = new DatabaseParser();
         dbReader.savePerson(p1);
